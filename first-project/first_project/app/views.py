@@ -3,7 +3,7 @@ from os import listdir
 from django.http import HttpResponse
 from django.shortcuts import render, reverse
 
-
+    # Главная (домашняя) страница, которая содержит список доступных страниц;
 def home_view(request):
     template_name = 'app/home.html'
     pages = {
@@ -19,14 +19,14 @@ def home_view(request):
     }
     return render(request, template_name, context)
 
-
+    # Страница отображающая текущее время
 def time_view(request):
     current_date_time = datetime.now()
     current_time = current_date_time.time()
     msg = f'Текущее время: {current_time}'
     return HttpResponse(msg)
 
-
+    # Вывод сообщения содержащего список файлов рабочей директории
 def workdir_view(request):
     file_list = listdir(path='.')
     msg = f'Список файлов: {file_list}'
